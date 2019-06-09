@@ -36,5 +36,7 @@ gulp.task('vue', function () {
 gulp.task('vue-build-task', gulp.series('vue', 'deploy-ftp'))
 
 gulp.task('watch', function () {
-  gulp.watch(['./src/*.*', './src/components/!*.*'], gulp.series('vue-build-task'))
+  gulp.watch(
+    ['./src/*.*', './src/components/!*.*', './src/css/base/*.*', './src/css/modules/*.*', './src/fonts/*.*'],
+    gulp.series('vue-build-task'))
 })

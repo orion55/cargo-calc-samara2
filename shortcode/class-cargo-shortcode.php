@@ -21,7 +21,7 @@ class Cargo_Shortcode
         ), $atts);
 
         $html = "
-        <div id=\"cargo-calc\"></div>
+        <div id=\"cargo-calc\"><demo></demo></div>
         ";
 
         self::$full = sanitize_text_field($atts['full']);
@@ -32,11 +32,10 @@ class Cargo_Shortcode
     static function register_script()
     {
         $url = plugin_dir_url(__FILE__);
-        wp_register_style('fontawesome', plugin_dir_url(__FILE__) . 'assets/css/fontawesome.all.min.css', array(), time(), 'all');
-        wp_register_style('vue-datetime', plugin_dir_url(__FILE__) . 'assets/css/vue-datetime.min.css', array(), time(), 'all');
-        wp_register_style('vue-multiselect', plugin_dir_url(__FILE__) . 'assets/css/vue-multiselect.min.css', array(), time(), 'all');
-        wp_register_style('main', plugin_dir_url(__FILE__) . 'assets/css/main.min.css', array(), time(), 'all');
-        wp_register_script('build', plugin_dir_url(__FILE__) . 'assets/js/build.js', array('jquery'), time(), true);
+        wp_register_style('cargo-module', plugin_dir_url(__FILE__) . 'dist/cargo.css', null, time(), 'all');
+        wp_register_script('vue', plugin_dir_url(__FILE__) . 'js/vue.js', array(), null, true);
+        wp_register_script('cargo-module-lib', plugin_dir_url(__FILE__) . 'dist/cargo.umd.min.js', array('vue'), time(), true);
+        wp_register_script('main', plugin_dir_url(__FILE__) . 'js/main.js', array('cargo-module-lib'), time(), true);
     }
 
     static function print_script()
@@ -44,11 +43,10 @@ class Cargo_Shortcode
         if (!self::$add_script) {
             return;
         }
-        wp_enqueue_style('fontawesome');
-        wp_enqueue_style('vue-datetime');
-        wp_enqueue_style('vue-multiselect');
-        wp_enqueue_style('main');
-        wp_print_scripts('build');
+        wp_enqueue_style('cargo-module');
+        wp_print_scripts('vue');
+        wp_print_scripts('cargo-module-lib');
+        wp_print_scripts('main');
     }
 
     static function js_variables()

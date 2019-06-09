@@ -1,7 +1,6 @@
 var gulp = require('gulp')
 var ftp = require('vinyl-ftp')
 var shell = require('gulp-shell')
-var runSequence = require('run-sequence')
 
 gulp.task('deploy-ftp', function () {
 
@@ -34,13 +33,8 @@ gulp.task('vue', function () {
     .pipe(shell('vue-cli-service build --target lib --name cargo'))
 })
 
-gulp.task('vue-build-task', function () {
-  return gulp.series('vue', 'deploy-ftp')
-  // return runSequence('vue', 'deploy-ftp')
-})
+gulp.task('vue-build-task', gulp.series('vue', 'deploy-ftp'))
 
-/*gulp.task('watch', function () {
-  gulp.watch(
-    ['./src/!*.*', './src/components/!*.*', './src/assets/css/!*.*', './src/components/ListAddress/!*.*'],
-    ['vue-build-task'])
-})*/
+gulp.task('watch', function () {
+  gulp.watch(['./src/*.*', './src/components/!*.*'], gulp.series('vue-build-task'))
+})

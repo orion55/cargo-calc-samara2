@@ -1,0 +1,19 @@
+<meta charset="utf-8">
+<title>cargo demo</title>
+<script src="https://unpkg.com/vue"></script>
+<script src="./cargo.umd.js"></script>
+
+<link rel="stylesheet" href="./cargo.css">
+
+
+<div id="app">
+  <demo></demo>
+</div>
+
+<script>
+new Vue({
+  components: {
+    demo: cargo
+  }
+}).$mount('#app')
+</script>

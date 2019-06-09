@@ -1,0 +1,40 @@
+#date_from-error, #date_to-error, .error_note {
+    color: red;
+    width: auto;
+    padding-left: 10px;
+}
+
+.animate-spin {
+    padding-top: 7px;
+    padding-left: 7px;
+    display: none;
+}
+
+.spin {
+    animation: fa-spin 2s infinite linear;
+    height: 16px;
+    width: 16px;
+}
+
+@keyframes fa-spin {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    to {
+        transform: rotate(1turn)
+    }
+}
+
+.form-horizontal {
+    display: flex;
+}
+
+#form-note {
+    padding-left: 20px;
+}
+
+.rigging-checkbox {
+    display: flex;
+    align-items: center;
+}

@@ -35,7 +35,8 @@ gulp.task('vue', function () {
 })
 
 gulp.task('vue-build-task', function () {
-  return runSequence('vue', 'deploy-ftp')
+  return gulp.series('vue', 'deploy-ftp')
+  // return runSequence('vue', 'deploy-ftp')
 })
 
 /*gulp.task('watch', function () {

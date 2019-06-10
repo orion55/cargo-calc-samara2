@@ -328,12 +328,6 @@
                         </div>
                     </div>
                 </div>
-                <simplert :useRadius="true" :useIcon="true" ref="simplert">
-                </simplert>
-                <simplert :useRadius="true" :useIcon="true" ref="simplert_result">
-                </simplert>
-                <simplert :useRadius="true" :useIcon="true" ref="simplert_manager">
-                </simplert>
             </div>
         </div>
     </form>
@@ -346,18 +340,17 @@
   import Inputmask from 'inputmask'
   import Datetime from 'vue-datetime'
   import 'vue-datetime/dist/vue-datetime.css'
-  import Simplert from 'vue2-simplert'
   import VeeValidate from 'vee-validate'
   import axios from 'axios'
   import { TweenLite } from 'gsap'
+  import VueSweetalert2 from 'vue-sweetalert2'
 
   let Qs = require('qs')
-
-  require('vue2-simplert/dist/simplert.css')
 
   Vue.component('multiselect', Multiselect)
   Vue.use(Datetime)
   Vue.use(VeeValidate)
+  Vue.use(VueSweetalert2)
 
   //простой расчет цены услуги
   let pricePlus = (obj, durability) => {
@@ -384,7 +377,6 @@
     name: 'app',
     components: {
       Multiselect,
-      Simplert,
     },
     data () {
       return {
@@ -465,19 +457,11 @@
           visibility: false,
           text: '',
         },
-        objAlert: {
-          title: '',
-          message: '',
-          type: 'info',
-          customCloseBtnClass: 'btn btn--modal',
-          customCloseBtnText: 'Ok',
-        },
         objAlertResult: {
           title: '',
-          message: '',
+          html: '',
           type: '',
-          customCloseBtnClass: 'btn btn--modal',
-          customCloseBtnText: 'Ok',
+          confirmButtonColor: '#90B630',
         },
         contact: {
           name: '',
@@ -887,16 +871,20 @@
         this.note.visibility = !this.note.visibility
       },
       openSimplert: function () {
-        this.objAlert.title = this.car.selected.name
-        this.objAlert.message = '<div class="calc__modal">' +
-          '<div class="calc__modal-desc">' + this.car.selected.desc + '</div>' +
-          '<div class="calc__modal-charater">' +
-          '<div class="calc__modal-text">Габаритные размеры</div>' +
-          '<div class="calc__modal-info">' + this.car.selected.size + '</div>' +
-          '<div class="calc__modal-text">Грузоподъемность</div>' +
-          '<div class="calc__modal-info">до ' + this.car.selected.carrying + '</div>' +
-          '</div></div>'
-        this.$refs.simplert.openSimplert(this.objAlert)
+        Vue.swal({
+          type: 'info',
+          title: this.car.selected.name,
+          html: '<div class="calc__modal">' +
+            '<div class="calc__modal-desc">' + this.car.selected.desc + '</div>' +
+            '<div class="calc__modal-charater">' +
+            '<div class="calc__modal-text">Габаритные размеры</div>' +
+            '<div class="calc__modal-info">' + this.car.selected.size + '</div>' +
+            '<div class="calc__modal-text">Грузоподъемность</div>' +
+            '<div class="calc__modal-info">до ' + this.car.selected.carrying + '</div>' +
+            '</div></div>',
+          confirmButtonColor: '#90B630',
+        })
+
       },
       validateContact () {
         this.$validator.validateAll()
@@ -1065,18 +1053,21 @@
                   } else {
                     this.objAlertResult.type = 'error'
                     this.objAlertResult.title = 'Ошибка'
-                    this.objAlertResult.message = ''
+                    this.objAlertResult.html = ''
                     answer.data.forEach((element) => {
-                      this.objAlertResult.message += element + '<br />'
+                      this.objAlertResult.html += element + '<br />'
                     })
                   }
-                  this.$refs.simplert_result.openSimplert(this.objAlertResult)
+                  Vue.swal(this.objAlertResult)
                 })
                 .catch((error) => {
-                  this.objAlertResult.type = 'error'
-                  this.objAlertResult.title = 'Ошибка'
-                  this.objAlertResult.message = 'Ошибка сервера'
-                  this.$refs.simplert_result.openSimplert(this.objAlertResult)
+                  Vue.swal({
+                    type: 'error',
+                    title: 'Ошибка',
+                    html: 'Ошибка сервера',
+                    confirmButtonColor: '#90B630',
+                  })
+
                 })
             } else {
               let btnCheckout = this.$refs.btnCheckout
@@ -1180,14 +1171,21 @@
         }
       },
       callManager () {
-        this.objAlert.title = ''
-        this.objAlert.message = 'К сожалению, выбранного направления пока нет, но мы постоянно расширяем список наших маршрутов.<br><br>Позвоните нашему менеджеру по телефонам<br><a href="tel:+78482249060">+7 (8482) 24-90-60</a> <a href="tel:+78003506720">+7 800 350-67-20</a> <br>и узнайте возможно оно уже появилось.'
-        this.$refs.simplert_manager.openSimplert(this.objAlert)
+        Vue.swal({
+          type: 'info',
+          title: '',
+          html: 'К сожалению, выбранного направления пока нет, но мы постоянно расширяем список наших маршрутов.<br><br>Позвоните нашему менеджеру по телефонам<br><a href="tel:+78482249060">+7 (8482) 24-90-60</a> <a href="tel:+78003506720">+7 800 350-67-20</a> <br>и узнайте возможно оно уже появилось.',
+          confirmButtonColor: '#90B630',
+        })
+
       },
       openRigging () {
-        this.objAlert.title = 'Такелажные работы'
-        this.objAlert.message = 'это комплекс мер, направленных на поднятие разнообразных грузов с целью их погрузки\\выгрузки.<br><br>Например, нужно перевести оборудования промышленного назначения, огромные резервуары, банкоматы, сейфы, серверы, контейнеры, пианино и всё, что от 100 кг и больше'
-        this.$refs.simplert.openSimplert(this.objAlert)
+        Vue.swal({
+          type: 'info',
+          title: 'Такелажные работы',
+          html: 'это комплекс мер, направленных на поднятие разнообразных грузов с целью их погрузки\\выгрузки.<br><br>Например, нужно перевести оборудования промышленного назначения, огромные резервуары, банкоматы, сейфы, серверы, контейнеры, пианино и всё, что от 100 кг и больше',
+          confirmButtonColor: '#90B630',
+        })
       },
     },
     watch: {

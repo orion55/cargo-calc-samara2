@@ -197,7 +197,7 @@
                                                      :disabled="isDisabledCargoTime"></multiselect>
                                     </div>
                                     <div class="calc__gear-inner">
-                                        <label class="control control-checkbox calc__gear-label">
+                                        <label class="control control-checkbox calc__gear-label control__disabled">
                                             Такелажные работы
                                             <input type="checkbox" v-model="riggingFlag"/>
                                             <div class="control_indicator"></div>
@@ -239,7 +239,7 @@
                                 </div>
                             </div>
                             <div class="calc__row calc__row--four">
-                                <div class="calc__item calc__item--five">
+                                <div class="calc__item calc__item--five calc__hidden">
                                     <div class="calc__desc calc__desc--time">Когда подать</div>
                                     <multiselect v-model="time_delivery.selected"
                                                  :options="time_delivery_options"
@@ -1254,12 +1254,12 @@
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 
 <style lang="scss">
+    @import "./fonts/fonts";
+    @import "./fonts/fontawesome";
     @import "./css/base/vars";
     @import "./css/base/smart-grid";
     @import "./css/base/misc";
     @import "./css/base/checkbox";
     @import "./css/base/preloader";
     @import "./css/modules/calc";
-    @import "./fonts/fonts";
-    @import "./fonts/fontawesome";
 </style>

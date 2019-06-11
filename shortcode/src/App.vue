@@ -238,98 +238,95 @@
                                     длительность
                                 </div>
                             </div>
-                            <div class="calc__row calc__row--four">
-                                <div class="calc__item calc__item--five calc__hidden">
-                                    <div class="calc__desc calc__desc--time">Когда подать</div>
-                                    <multiselect v-model="time_delivery.selected"
-                                                 :options="time_delivery_options"
-                                                 label="label" track-by="id" :searchable="false"
-                                                 :show-labels="false" :maxHeight="200"
-                                                 class="calc__dropdown calc__dropdown--time"
-                                                 :allow-empty="false"></multiselect>
+                            <div class="calc__item calc__item--five calc__hidden">
+                                <div class="calc__desc calc__desc--time">Когда подать</div>
+                                <multiselect v-model="time_delivery.selected"
+                                             :options="time_delivery_options"
+                                             label="label" track-by="id" :searchable="false"
+                                             :show-labels="false" :maxHeight="200"
+                                             class="calc__dropdown calc__dropdown--time"
+                                             :allow-empty="false"></multiselect>
+                            </div>
+                            <div class="calc__item calc__item--six">
+                                <i class="far fa-calendar-alt calc__icon"></i>
+                                <datetime type="datetime" v-model="calendar.datetime"
+                                          class='calc__input--datepicker'
+                                          :phrases="{ok: 'Ok', cancel: 'Выход'}"
+                                          :minute-step="10"
+                                          :format="{ year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit'}"
+                                          value-zone="Europe/Samara" :value="calendar.datetime"
+                                ></datetime>
+                            </div>
+                            <div class="calc__item calc__item--seven">
+                                <div class="calc__desc calc__desc--durability">Длительность
+                                    заказа
                                 </div>
-                                <div class="calc__item calc__item--six">
-                                    <i class="far fa-calendar-alt calc__icon"></i>
-                                    <datetime type="datetime" v-model="calendar.datetime"
-                                              class='calc__input--datepicker'
-                                              :phrases="{ok: 'Ok', cancel: 'Выход'}"
-                                              :minute-step="10"
-                                              :format="{ year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit'}"
-                                              value-zone="Europe/Samara" :value="calendar.datetime"
-                                    ></datetime>
+                                <multiselect v-model="durability.selected"
+                                             :options="durability_options"
+                                             label="label" track-by="id" :searchable="false"
+                                             :show-labels="false" :maxHeight="200"
+                                             class="calc__dropdown calc__dropdown--durability"
+                                             :allow-empty="false"
+                                             :disabled="intercityFlag"></multiselect>
+                            </div>
+                            <div class="calc__item calc__item--eight">
+                                <a href="#" class="calc__link--plus"
+                                   @click.prevent="inverseShowNote">
+                                    <i class="fas fa-plus calc__icon calc__plus"></i>
+                                    <span class="calc__desc calc__desc--plus">Примечание к заказу</span>
+                                </a>
+                                <textarea class='calc__input calc__input--note'
+                                          v-show="note.visibility"
+                                          v-model="note.text"></textarea>
+                            </div>
+                            <div class="calc__price">
+                                <div class="calc__item calc__item--nine">
+                                    <span class="calc__price-text">Обычная цена</span>
+                                    <span class="calc__price-number"
+                                          id="calc__price-number">{{price_normal_common}}</span>
+                                    <span class="calc__rub"><i
+                                            class="fas fa-ruble-sign calc__price-rub"></i></span>
                                 </div>
-                                <div class="calc__item calc__item--seven">
-                                    <div class="calc__desc calc__desc--durability">Длительность
-                                        заказа
+                                <div class="calc__item calc__item--nine">
+                                    <span class="calc__price-text">Грузчики</span>
+                                    <span class="calc__price-number"
+                                          id="calc__price-movers">{{price_movers}}</span>
+                                    <span class="calc__rub"><i
+                                            class="fas fa-ruble-sign calc__price-rub"></i></span>
+                                </div>
+                                <div class="calc__item calc__item--ten">
+                                    <div class="calc__box-discount">
+                                        <span class="calc__discount">Экономия</span>
+                                        <span class="calc__discount-number"
+                                              id="calc__discount-number">{{discount}}</span>
+                                        <span class="calc__discount-percent">%</span>
                                     </div>
-                                    <multiselect v-model="durability.selected"
-                                                 :options="durability_options"
-                                                 label="label" track-by="id" :searchable="false"
-                                                 :show-labels="false" :maxHeight="200"
-                                                 class="calc__dropdown calc__dropdown--durability"
-                                                 :allow-empty="false"
-                                                 :disabled="intercityFlag"></multiselect>
-                                </div>
-                                <div class="calc__item calc__item--eight">
-                                    <a href="#" class="calc__link--plus"
-                                       @click.prevent="inverseShowNote">
-                                        <i class="fas fa-plus calc__icon calc__plus"></i>
-                                        <span class="calc__desc calc__desc--plus">Примечание к заказу</span>
-                                    </a>
-                                    <textarea class='calc__input calc__input--note'
-                                              v-show="note.visibility"
-                                              v-model="note.text"></textarea>
-                                </div>
-                                <div class="calc__price">
-                                    <div class="calc__item calc__item--nine">
-                                        <span class="calc__price-text">Обычная цена</span>
-                                        <span class="calc__price-number"
-                                              id="calc__price-number">{{price_normal_common}}</span>
-                                        <span class="calc__rub"><i
-                                                class="fas fa-ruble-sign calc__price-rub"></i></span>
-                                    </div>
-                                    <div class="calc__item calc__item--nine">
-                                        <span class="calc__price-text">Грузчики</span>
-                                        <span class="calc__price-number"
-                                              id="calc__price-movers">{{price_movers}}</span>
-                                        <span class="calc__rub"><i
-                                                class="fas fa-ruble-sign calc__price-rub"></i></span>
-                                    </div>
-                                    <div class="calc__item calc__item--ten">
-                                        <div class="calc__box-discount">
-                                            <span class="calc__discount">Экономия</span>
-                                            <span class="calc__discount-number"
-                                                  id="calc__discount-number">{{discount}}</span>
-                                            <span class="calc__discount-percent">%</span>
-                                        </div>
-                                        <div class="calc__box-discount-price">
+                                    <div class="calc__box-discount-price">
                                                 <span class="calc__discount-sum"
                                                       id="calc__discount-sum">{{economy}}</span>
-                                            <span class="calc__rub"><i
-                                                    class="fas fa-ruble-sign calc__discount-rub"></i></span>
-                                        </div>
+                                        <span class="calc__rub"><i
+                                                class="fas fa-ruble-sign calc__discount-rub"></i></span>
                                     </div>
-                                    <div class="calc__item calc__item--eleven">
-                                        <div class="calc__result-text">Итого со скидкой</div>
-                                        <div class="calc__box-result-price">
+                                </div>
+                                <div class="calc__item calc__item--eleven">
+                                    <div class="calc__result-text">Итого со скидкой</div>
+                                    <div class="calc__box-result-price">
                                         <span class="calc__result-sum"
                                               id="calc__result-sum">{{animated_price_result}}</span>
-                                            <span class="calc__rub"><i
-                                                    class="fas fa-ruble-sign  calc__result-rub"></i></span>
-                                        </div>
+                                        <span class="calc__rub"><i
+                                                class="fas fa-ruble-sign  calc__result-rub"></i></span>
                                     </div>
-                                    <button type="button" class="btn btn--result hvr-radial-out"
-                                            @click.prevent="buttonCheckout.funct"
-                                            ref="btnCheckout">
-                                        {{buttonCheckout.title}}
-                                    </button>
                                 </div>
+                                <button type="button" class="btn btn--result hvr-radial-out"
+                                        @click.prevent="buttonCheckout.funct"
+                                        ref="btnCheckout">
+                                    {{buttonCheckout.title}}
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     </form>
 </template>
 

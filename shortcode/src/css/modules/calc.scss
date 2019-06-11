@@ -46,6 +46,7 @@
     flex-direction: column;
     //height: 96%;
     justify-content: space-around;
+    height: 100%;
   }
 
   .calc__title {
@@ -83,7 +84,7 @@
   }
 
   .calc__row--one {
-    padding-bottom: 5px;
+    padding-bottom: 15px;
     border-bottom: 1px solid #d9d9d9;
   }
 
@@ -232,7 +233,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 19px;
+    padding-bottom: 6px;
   }
 
   .calc__item--nine {
@@ -257,8 +258,9 @@
     display: flex;
     justify-content: start;
     align-items: center;
-    margin-left: 10px;
-    padding-bottom: 19px;
+    //margin-left: 10px;
+    padding-bottom: 10px;
+    padding-top: 32px;
   }
 
   .calc__item--eight {
@@ -559,8 +561,9 @@
     padding: 10px 15px;
     display: flex;
     flex-direction: column;
-    flex: 1;
+    //flex: 1;
     justify-content: space-between;
+    margin-top: auto;
   }
 
   .calc__price-text, .calc__price-number {
@@ -636,6 +639,7 @@
     flex: 1;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
   }
 
   .calc__row--four {
@@ -788,10 +792,6 @@
       flex-direction: column;
     }
 
-    .calc__two {
-      width: 100%;
-    }
-
     .calc__one {
       max-width: none;
       padding: 15px;
@@ -800,12 +800,12 @@
     .calc__two {
       max-width: none;
       padding: 15px;
-      width: 90%;
+      width: 100%;
     }
 
     .calc__three {
       padding: 15px;
-      width: 92%;
+      width: 100%;
     }
 
     .calc__head {
@@ -933,10 +933,6 @@
       flex-direction: column;
     }
 
-    .calc__two {
-      width: 100%;
-    }
-
     .calc__one {
       max-width: none;
       padding: 15px;
@@ -945,12 +941,12 @@
     .calc__two {
       max-width: none;
       padding: 15px;
-      width: 90%;
+      width: 100%;
     }
 
     .calc__three {
       padding: 15px;
-      width: 92%;
+      width: 100%;
     }
 
     .calc__head {

@@ -1084,14 +1084,20 @@
         window.scrollTo(0, top)
       },
       fillDestinations () {
-        _.find(this.info.data.metadata.area)
-        this.address.options = [{
-          place: 'Пригород',
-          area: [],
-        }, {
-          place: 'Межгород',
-          area: [],
-        }]
+        this.address.options.push({
+            place: 'Город',
+            area: [],
+          },
+          {
+            place: 'Пригород',
+            area: [],
+          }, {
+            place: 'Межгород',
+            area: [],
+          })
+        const curСity = _.find(this.info.data.metadata.area, ['id', 999])
+        this.address.options[0].area.push(curСity)
+
         let filterArray = _.filter(this.info.data.metadata.area, (item) => {
           return item.id >= 10 && item.id < 100
         })
@@ -1111,80 +1117,8 @@
         _.forEach(filterArray, (item) => {
           this.address.options[2].area.push(item)
         })
-      },
-      fillDestinationsOld () {
-        //Заполняем пункты назначения
-        //если не установлен флаг междугородние перевозки
-        if (!this.intercityFlag) {
-          this.address.options = [{
-            place: 'г. Тольятти',
-            area: [],
-          }, {
-            place: 'Пригород',
-            area: [],
-          }]
-
-          let filterArray = _.filter(this.info.data.metadata.area, (item) => {
-            return item.id < 10
-          })
-          _.forEach(filterArray, (item) => {
-            this.address.options[0].area.push(item)
-          })
-          filterArray = _.filter(this.info.data.metadata.area, (item) => {
-            return item.id >= 10 && item.id < 100
-          })
-          filterArray = _.sortBy(filterArray, [(item) => {
-            return item.name
-          }])
-          _.forEach(filterArray, (item) => {
-            this.address.options[1].area.push(item)
-          })
-
-          this.address_from.selected = {
-            'id': 1,
-            'name': 'Центральный р-н',
-          }
-          this.address_to.selected = {
-            'id': 1,
-            'name': 'Центральный р-н',
-          }
-
-          if (!(_.isEmpty(this.car.options))) {
-            _.forEach(this.car.options, (item) => {
-              item.$isDisabled = false
-            })
-          }
-        } else {
-          this.address.options = [{
-            place: 'Города',
-            area: [],
-          }]
-          let filterArray = _.filter(this.info.data.metadata.area, (item) => {
-            return item.id >= 100
-          })
-          filterArray = _.sortBy(filterArray, [(item) => {
-            return item.name
-          }])
-          _.forEach(filterArray, (item) => {
-            this.address.options[0].area.push(item)
-          })
-
-          this.address_from.selected = {
-            'id': 999,
-            'name': 'Тольятти',
-          }
-          this.address_to.selected = {
-            'id': 123,
-            'name': 'Москва',
-          }
-
-          _.forEach(this.car.options, (item) => {
-            if (item.id !== 2 && item.id !== 3) {
-              item.$isDisabled = true
-            }
-          })
-          this.car.selected = this.car.options[2]
-        }
+        this.address_from.selected = curСity
+        this.address_to.selected = curСity
       },
       changeBtn (flag) {
         if (flag) {
@@ -1265,7 +1199,7 @@
           _.delay(() => {
             this.loading = false
           }, 500)
-          console.log(error)
+          console.log('Error:'+error)
           this.info.errored = true
         })
         .finally(() => {

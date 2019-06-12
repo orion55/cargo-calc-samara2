@@ -181,12 +181,6 @@
   },
   "price_loader": [
     {
-      "min_time": 1,
-      "min_price": 390,
-      "additional_price": 380,
-      "type_work_id": 0
-    },
-    {
       "min_time": 2,
       "min_price": 560,
       "additional_price": 270,

@@ -490,6 +490,7 @@
         return window.wp_data
       },
       durability_options: function () {
+        //блокировка пунктов меню "длительность заказа"
         //блокируем пункты выпадающего списка в зависимости от типа машины, времени подачи и адреса подачи
         let data = [
           {
@@ -534,29 +535,17 @@
           },
         ]
 
-        let car_id = this.car.selected.id
-        let time_delivery_id = this.time_delivery.selected.id
-        let address_to_id = this.address_to.selected.id
-
         if (!_.isEmpty(this.info.data)) {
-          let priceData = this.info.data.price
-          let current = {}
-          if (time_delivery_id === 0) {
-            current = _.find(priceData, {
-              'car_id': car_id,
-              'time_delivery_id': time_delivery_id,
-            })
-          } else if (time_delivery_id === 1) {
-            current = _.find(priceData, {
-              'car_id': car_id,
-              'time_delivery_id': time_delivery_id,
-              'address_to': address_to_id,
-            })
-          }
+
+          const current = _.find(this.info.data.price, {
+            'car_id': this.car.selected.id,
+            'address_to': this.address_to.selected.id,
+          })
+
           if (!_.isEmpty(current) && 'min_time' in current) {
-            let minTime = +current.min_time - 1
+            const minTime = +current.min_time - 1
             if (minTime > 0) {
-              let part = _.filter(data, (item) => {
+              const part = _.filter(data, (item) => {
                 return item.id <= minTime
               })
               _.forEach(part, (item) => {
@@ -569,7 +558,6 @@
             }
           }
         }
-
         return data
       },
       cargo_options: function () {
@@ -620,19 +608,14 @@
             $isDisabled: false,
           },
         ]
-        let time_delivery_id = this.time_delivery.selected.id
         if (!_.isEmpty(this.info.data)) {
-          let priceLoader = this.info.data.price_loader
-          let type_work_id = this.typeWork
-
-          let current = _.find(priceLoader, {
-            'time_delivery_id': time_delivery_id,
-            'type_work_id': type_work_id,
+          const current = _.find(this.info.data.price_loader, {
+            'type_work_id': this.typeWork,
           })
           if (!_.isEmpty(current) && 'min_time' in current) {
-            let minTime = +current.min_time - 1
+            const minTime = +current.min_time - 1
             if (minTime > 0) {
-              let part = _.filter(data, (item) => {
+              const part = _.filter(data, (item) => {
                 return item.id <= minTime
               })
               _.forEach(part, (item) => {
@@ -831,8 +814,8 @@
       typeWork: function () {
         //возращает тип работы для грузчиков: город, пригород, такелаж
         let type_work_id = 0
-        let address_from_id = this.address_from.selected.id
-        let address_to_id = this.address_to.selected.id
+        const address_from_id = this.address_from.selected.id
+        const address_to_id = this.address_to.selected.id
 
         if (this.riggingFlag) {
           type_work_id = 2
@@ -1199,7 +1182,7 @@
           _.delay(() => {
             this.loading = false
           }, 500)
-          console.log('Error:'+error)
+          console.log('Error:' + error)
           this.info.errored = true
         })
         .finally(() => {

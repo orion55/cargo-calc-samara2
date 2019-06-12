@@ -1,0 +1,976 @@
+﻿{
+  "metadata": {
+    "area": [
+      {
+        "id": 10,
+        "name": "Южный город"
+      },
+      {
+        "id": 11,
+        "name": "Микрайон Волгарь"
+      },
+      {
+        "id": 12,
+        "name": "Красная Глинка"
+      },
+      {
+        "id": 13,
+        "name": "Микрайон Кошелев"
+      },
+      {
+        "id": 100,
+        "name": "Тольятти"
+      },
+      {
+        "id": 101,
+        "name": "Кинель"
+      },
+      {
+        "id": 102,
+        "name": "Новокуйбышевск"
+      },
+      {
+        "id": 103,
+        "name": "Чапаевск"
+      },
+      {
+        "id": 104,
+        "name": "Нефтегорск"
+      },
+      {
+        "id": 105,
+        "name": "Ульяновск"
+      },
+      {
+        "id": 106,
+        "name": "Димитровград "
+      },
+      {
+        "id": 107,
+        "name": "Оренбург "
+      },
+      {
+        "id": 108,
+        "name": "Бузулук"
+      },
+      {
+        "id": 109,
+        "name": "Уфа"
+      },
+      {
+        "id": 110,
+        "name": "Набережные Челны "
+      },
+      {
+        "id": 111,
+        "name": "Нижнекамск"
+      },
+      {
+        "id": 112,
+        "name": "Ижевск"
+      },
+      {
+        "id": 113,
+        "name": "Казань"
+      },
+      {
+        "id": 114,
+        "name": "Чебоксары"
+      },
+      {
+        "id": 115,
+        "name": "Саранск"
+      },
+      {
+        "id": 116,
+        "name": "Пенза"
+      },
+      {
+        "id": 117,
+        "name": "Кузнецк"
+      },
+      {
+        "id": 118,
+        "name": "Тольяти-Саратов"
+      },
+      {
+        "id": 119,
+        "name": "Энгельс"
+      },
+      {
+        "id": 120,
+        "name": "Сызрань"
+      },
+      {
+        "id": 121,
+        "name": "Краснодар"
+      },
+      {
+        "id": 122,
+        "name": "Сочи"
+      },
+      {
+        "id": 123,
+        "name": "Москва"
+      },
+      {
+        "id": 124,
+        "name": "Санкт-Петербург"
+      },
+      {
+        "id": 998,
+        "name": "Новокуйбышевск"
+      },
+      {
+        "id": 999,
+        "name": "Самара"
+      }
+    ],
+    "car": [
+      {
+        "id": 1,
+        "name": "Газель 1,5 т",
+        "picture": "assets/img/car/car02.jpg",
+        "size": "3м * 1,8м * 1,9м",
+        "carrying": "1 500 кг",
+        "desc": "подходит для всех переездов, перевозки бытовой техники, мебели"
+      },
+      {
+        "id": 2,
+        "name": "Газель 2т",
+        "picture": "assets/img/car/car02.jpg",
+        "size": "3м * 1,8м * 1,9м",
+        "carrying": "2 000 кг",
+        "desc": "подходит для всех переездов, перевозки бытовой техники, мебели"
+      },
+      {
+        "id": 3,
+        "name": "Isuzu 3 т",
+        "picture": "assets/img/car/car03.jpg",
+        "size": "6м * 2,1м * 2,3м",
+        "carrying": "3 000 кг",
+        "desc": "подходит для офисных переездов, для малотоннажных междугородних перевозок, температурных перевозок"
+      },
+      {
+        "id": 4,
+        "name": "Man 5 т",
+        "picture": "assets/img/car/car04.jpg",
+        "size": " 6,2м * 2,45м * 2,35м",
+        "carrying": "5 000 кг",
+        "desc": "подходит для малотоннажных перевозок по городу, межгороду, области, территории РФ"
+      },
+      {
+        "id": 5,
+        "name": "Man 10т",
+        "picture": "assets/img/car/car04.jpg",
+        "size": "7,2м * 2,4м * 2,4м",
+        "carrying": "10 000 кг",
+        "desc": "подходит для междугородних перевозок, внутригородских перевозок, по области, территории РФ"
+      }
+    ],
+    "type_work": [
+      {
+        "id": 0,
+        "name": "Город"
+      },
+      {
+        "id": 1,
+        "name": "Пригород"
+      },
+      {
+        "id": 2,
+        "name": "Такелаж"
+      }
+    ]
+  },
+  "price_loader": [
+    {
+      "min_time": 1,
+      "min_price": 390,
+      "additional_price": 380,
+      "type_work_id": 0
+    },
+    {
+      "min_time": 2,
+      "min_price": 560,
+      "additional_price": 270,
+      "type_work_id": 0
+    },
+    {
+      "min_time": 2,
+      "min_price": 650,
+      "additional_price": 320,
+      "type_work_id": 1
+    },
+    {
+      "min_time": 2,
+      "min_price": 670,
+      "additional_price": 330,
+      "type_work_id": 2
+    }
+  ],
+  "price": [
+    {
+      "car_id": 3,
+      "min_time": 3,
+      "min_price": 2385,
+      "additional_price": 795,
+      "address_from": 999,
+      "address_to": 999
+    },
+    {
+      "car_id": 4,
+      "min_time": 4,
+      "min_price": 3980,
+      "additional_price": 995,
+      "address_from": 999,
+      "address_to": 999
+    },
+    {
+      "car_id": 5,
+      "min_time": 4,
+      "min_price": 4780,
+      "additional_price": 1195,
+      "address_from": 999,
+      "address_to": 999
+    },
+    {
+      "car_id": 6,
+      "min_time": 5,
+      "min_price": 7975,
+      "additional_price": 1595,
+      "address_from": 999,
+      "address_to": 999
+    },
+    {
+      "car_id": 1,
+      "min_time": 2,
+      "min_price": 890,
+      "additional_price": 445,
+      "address_from": 999,
+      "address_to": 999
+    },
+    {
+      "car_id": 1,
+      "min_time": 3,
+      "min_price": 1355,
+      "additional_price": 445,
+      "address_from": 999,
+      "address_to": 10
+    },
+    {
+      "car_id": 1,
+      "min_time": 3,
+      "min_price": 1355,
+      "additional_price": 445,
+      "address_from": 999,
+      "address_to": 11
+    },
+    {
+      "car_id": 1,
+      "min_time": 3,
+      "min_price": 1355,
+      "additional_price": 445,
+      "address_from": 999,
+      "address_to": 12
+    },
+    {
+      "car_id": 1,
+      "min_time": 3,
+      "min_price": 1355,
+      "additional_price": 445,
+      "address_from": 999,
+      "address_to": 13
+    },
+    {
+      "car_id": 1,
+      "min_time": 1,
+      "min_price": 1590,
+      "additional_price": 445,
+      "address_from": 999,
+      "address_to": 998
+    },
+    {
+      "car_id": 1,
+      "min_time": 3,
+      "min_price": 1355,
+      "additional_price": 445,
+      "address_from": 10,
+      "address_to": 999
+    },
+    {
+      "car_id": 1,
+      "min_time": 2,
+      "min_price": 890,
+      "additional_price": 445,
+      "address_from": 10,
+      "address_to": 10
+    },
+    {
+      "car_id": 1,
+      "min_time": 3,
+      "min_price": 1355,
+      "additional_price": 445,
+      "address_from": 10,
+      "address_to": 11
+    },
+    {
+      "car_id": 1,
+      "min_time": 4,
+      "min_price": 1780,
+      "additional_price": 445,
+      "address_from": 10,
+      "address_to": 12
+    },
+    {
+      "car_id": 1,
+      "min_time": 4,
+      "min_price": 1780,
+      "additional_price": 445,
+      "address_from": 10,
+      "address_to": 13
+    },
+    {
+      "car_id": 1,
+      "min_time": 1,
+      "min_price": 1290,
+      "additional_price": 445,
+      "address_from": 10,
+      "address_to": 998
+    },
+    {
+      "car_id": 1,
+      "min_time": 3,
+      "min_price": 1355,
+      "additional_price": 445,
+      "address_from": 11,
+      "address_to": 999
+    },
+    {
+      "car_id": 1,
+      "min_time": 3,
+      "min_price": 1355,
+      "additional_price": 445,
+      "address_from": 11,
+      "address_to": 10
+    },
+    {
+      "car_id": 1,
+      "min_time": 2,
+      "min_price": 890,
+      "additional_price": 445,
+      "address_from": 11,
+      "address_to": 11
+    },
+    {
+      "car_id": 1,
+      "min_time": 4,
+      "min_price": 1780,
+      "additional_price": 445,
+      "address_from": 11,
+      "address_to": 12
+    },
+    {
+      "car_id": 1,
+      "min_time": 4,
+      "min_price": 1780,
+      "additional_price": 445,
+      "address_from": 11,
+      "address_to": 13
+    },
+    {
+      "car_id": 1,
+      "min_time": 1,
+      "min_price": 1290,
+      "additional_price": 445,
+      "address_from": 11,
+      "address_to": 998
+    },
+    {
+      "car_id": 1,
+      "min_time": 3,
+      "min_price": 1355,
+      "additional_price": 445,
+      "address_from": 12,
+      "address_to": 999
+    },
+    {
+      "car_id": 1,
+      "min_time": 4,
+      "min_price": 1780,
+      "additional_price": 445,
+      "address_from": 12,
+      "address_to": 10
+    },
+    {
+      "car_id": 1,
+      "min_time": 4,
+      "min_price": 1780,
+      "additional_price": 445,
+      "address_from": 12,
+      "address_to": 11
+    },
+    {
+      "car_id": 1,
+      "min_time": 2,
+      "min_price": 890,
+      "additional_price": 445,
+      "address_from": 12,
+      "address_to": 12
+    },
+    {
+      "car_id": 1,
+      "min_time": 3,
+      "min_price": 1355,
+      "additional_price": 445,
+      "address_from": 12,
+      "address_to": 13
+    },
+    {
+      "car_id": 1,
+      "min_time": 1,
+      "min_price": 2190,
+      "additional_price": 445,
+      "address_from": 12,
+      "address_to": 998
+    },
+    {
+      "car_id": 1,
+      "min_time": 3,
+      "min_price": 1355,
+      "additional_price": 445,
+      "address_from": 13,
+      "address_to": 999
+    },
+    {
+      "car_id": 1,
+      "min_time": 4,
+      "min_price": 1780,
+      "additional_price": 445,
+      "address_from": 13,
+      "address_to": 10
+    },
+    {
+      "car_id": 1,
+      "min_time": 4,
+      "min_price": 1780,
+      "additional_price": 445,
+      "address_from": 13,
+      "address_to": 11
+    },
+    {
+      "car_id": 1,
+      "min_time": 3,
+      "min_price": 1355,
+      "additional_price": 445,
+      "address_from": 13,
+      "address_to": 12
+    },
+    {
+      "car_id": 1,
+      "min_time": 2,
+      "min_price": 890,
+      "additional_price": 445,
+      "address_from": 13,
+      "address_to": 13
+    },
+    {
+      "car_id": 1,
+      "min_time": 1,
+      "min_price": 1990,
+      "additional_price": 445,
+      "address_from": 13,
+      "address_to": 998
+    },
+    {
+      "car_id": 2,
+      "min_time": 2,
+      "min_price": 1190,
+      "additional_price": 595,
+      "address_from": 999,
+      "address_to": 999
+    },
+    {
+      "car_id": 2,
+      "min_time": 3,
+      "min_price": 1785,
+      "additional_price": 595,
+      "address_from": 999,
+      "address_to": 10
+    },
+    {
+      "car_id": 2,
+      "min_time": 3,
+      "min_price": 1785,
+      "additional_price": 595,
+      "address_from": 999,
+      "address_to": 11
+    },
+    {
+      "car_id": 2,
+      "min_time": 3,
+      "min_price": 1785,
+      "additional_price": 595,
+      "address_from": 999,
+      "address_to": 12
+    },
+    {
+      "car_id": 2,
+      "min_time": 3,
+      "min_price": 1785,
+      "additional_price": 595,
+      "address_from": 999,
+      "address_to": 13
+    },
+    {
+      "car_id": 2,
+      "min_time": 1,
+      "min_price": 2190,
+      "additional_price": 595,
+      "address_from": 999,
+      "address_to": 998
+    },
+    {
+      "car_id": 2,
+      "min_time": 3,
+      "min_price": 1785,
+      "additional_price": 595,
+      "address_from": 10,
+      "address_to": 999
+    },
+    {
+      "car_id": 2,
+      "min_time": 2,
+      "min_price": 1190,
+      "additional_price": 595,
+      "address_from": 10,
+      "address_to": 10
+    },
+    {
+      "car_id": 2,
+      "min_time": 3,
+      "min_price": 1785,
+      "additional_price": 595,
+      "address_from": 10,
+      "address_to": 11
+    },
+    {
+      "car_id": 2,
+      "min_time": 4,
+      "min_price": 2380,
+      "additional_price": 595,
+      "address_from": 10,
+      "address_to": 12
+    },
+    {
+      "car_id": 2,
+      "min_time": 4,
+      "min_price": 2380,
+      "additional_price": 595,
+      "address_from": 10,
+      "address_to": 13
+    },
+    {
+      "car_id": 2,
+      "min_time": 1,
+      "min_price": 1890,
+      "additional_price": 595,
+      "address_from": 10,
+      "address_to": 998
+    },
+    {
+      "car_id": 2,
+      "min_time": 3,
+      "min_price": 1785,
+      "additional_price": 595,
+      "address_from": 11,
+      "address_to": 999
+    },
+    {
+      "car_id": 2,
+      "min_time": 3,
+      "min_price": 1785,
+      "additional_price": 595,
+      "address_from": 11,
+      "address_to": 10
+    },
+    {
+      "car_id": 2,
+      "min_time": 2,
+      "min_price": 1190,
+      "additional_price": 595,
+      "address_from": 11,
+      "address_to": 11
+    },
+    {
+      "car_id": 2,
+      "min_time": 4,
+      "min_price": 2380,
+      "additional_price": 595,
+      "address_from": 11,
+      "address_to": 12
+    },
+    {
+      "car_id": 2,
+      "min_time": 4,
+      "min_price": 2380,
+      "additional_price": 595,
+      "address_from": 11,
+      "address_to": 13
+    },
+    {
+      "car_id": 2,
+      "min_time": 1,
+      "min_price": 1890,
+      "additional_price": 595,
+      "address_from": 11,
+      "address_to": 998
+    },
+    {
+      "car_id": 2,
+      "min_time": 3,
+      "min_price": 1785,
+      "additional_price": 595,
+      "address_from": 12,
+      "address_to": 999
+    },
+    {
+      "car_id": 2,
+      "min_time": 4,
+      "min_price": 2380,
+      "additional_price": 595,
+      "address_from": 12,
+      "address_to": 10
+    },
+    {
+      "car_id": 2,
+      "min_time": 4,
+      "min_price": 2380,
+      "additional_price": 595,
+      "address_from": 12,
+      "address_to": 11
+    },
+    {
+      "car_id": 2,
+      "min_time": 2,
+      "min_price": 1190,
+      "additional_price": 595,
+      "address_from": 12,
+      "address_to": 12
+    },
+    {
+      "car_id": 2,
+      "min_time": 3,
+      "min_price": 1785,
+      "additional_price": 595,
+      "address_from": 12,
+      "address_to": 13
+    },
+    {
+      "car_id": 2,
+      "min_time": 1,
+      "min_price": 2690,
+      "additional_price": 595,
+      "address_from": 12,
+      "address_to": 998
+    },
+    {
+      "car_id": 2,
+      "min_time": 3,
+      "min_price": 1785,
+      "additional_price": 595,
+      "address_from": 13,
+      "address_to": 999
+    },
+    {
+      "car_id": 2,
+      "min_time": 4,
+      "min_price": 2380,
+      "additional_price": 595,
+      "address_from": 13,
+      "address_to": 10
+    },
+    {
+      "car_id": 2,
+      "min_time": 4,
+      "min_price": 2380,
+      "additional_price": 595,
+      "address_from": 13,
+      "address_to": 11
+    },
+    {
+      "car_id": 2,
+      "min_time": 3,
+      "min_price": 1785,
+      "additional_price": 595,
+      "address_from": 13,
+      "address_to": 12
+    },
+    {
+      "car_id": 2,
+      "min_time": 2,
+      "min_price": 1190,
+      "additional_price": 595,
+      "address_from": 13,
+      "address_to": 13
+    },
+    {
+      "car_id": 2,
+      "min_time": 1,
+      "min_price": 2690,
+      "additional_price": 595,
+      "address_from": 13,
+      "address_to": 998
+    },
+    {
+      "car_id": 2,
+      "price": 3500,
+      "address_to": 100
+    },
+    {
+      "car_id": 2,
+      "price": 4300,
+      "address_to": 101
+    },
+    {
+      "car_id": 2,
+      "price": 5200,
+      "address_to": 102
+    },
+    {
+      "car_id": 2,
+      "price": 6300,
+      "address_to": 103
+    },
+    {
+      "car_id": 2,
+      "price": 6300,
+      "address_to": 104
+    },
+    {
+      "car_id": 2,
+      "price": 5750,
+      "address_to": 105
+    },
+    {
+      "car_id": 2,
+      "price": 4300,
+      "address_to": 106
+    },
+    {
+      "car_id": 2,
+      "price": 12700,
+      "address_to": 107
+    },
+    {
+      "car_id": 2,
+      "price": 7200,
+      "address_to": 108
+    },
+    {
+      "car_id": 2,
+      "price": 14200,
+      "address_to": 109
+    },
+    {
+      "car_id": 2,
+      "price": 11500,
+      "address_to": 110
+    },
+    {
+      "car_id": 2,
+      "price": 10260,
+      "address_to": 111
+    },
+    {
+      "car_id": 2,
+      "price": 15390,
+      "address_to": 112
+    },
+    {
+      "car_id": 2,
+      "price": 10200,
+      "address_to": 113
+    },
+    {
+      "car_id": 2,
+      "price": 12420,
+      "address_to": 114
+    },
+    {
+      "car_id": 2,
+      "price": 12200,
+      "address_to": 115
+    },
+    {
+      "car_id": 2,
+      "price": 9200,
+      "address_to": 116
+    },
+    {
+      "car_id": 2,
+      "price": 9200,
+      "address_to": 117
+    },
+    {
+      "car_id": 2,
+      "price": 10600,
+      "address_to": 118
+    },
+    {
+      "car_id": 2,
+      "price": 10600,
+      "address_to": 119
+    },
+    {
+      "car_id": 2,
+      "price": 3700,
+      "address_to": 120
+    },
+    {
+      "car_id": 2,
+      "price": 31000,
+      "address_to": 121
+    },
+    {
+      "car_id": 2,
+      "price": 35000,
+      "address_to": 122
+    },
+    {
+      "car_id": 2,
+      "price": 16000,
+      "address_to": 123
+    },
+    {
+      "car_id": 2,
+      "price": 27000,
+      "address_to": 124
+    },
+    {
+      "car_id": 3,
+      "price": 4500,
+      "address_to": 100
+    },
+    {
+      "car_id": 3,
+      "price": 5500,
+      "address_to": 101
+    },
+    {
+      "car_id": 3,
+      "price": 6200,
+      "address_to": 102
+    },
+    {
+      "car_id": 3,
+      "price": 7200,
+      "address_to": 103
+    },
+    {
+      "car_id": 3,
+      "price": 7200,
+      "address_to": 104
+    },
+    {
+      "car_id": 3,
+      "price": 6300,
+      "address_to": 105
+    },
+    {
+      "car_id": 3,
+      "price": 5000,
+      "address_to": 106
+    },
+    {
+      "car_id": 3,
+      "price": 15000,
+      "address_to": 107
+    },
+    {
+      "car_id": 3,
+      "price": 8300,
+      "address_to": 108
+    },
+    {
+      "car_id": 3,
+      "price": 16300,
+      "address_to": 109
+    },
+    {
+      "car_id": 3,
+      "price": 12300,
+      "address_to": 110
+    },
+    {
+      "car_id": 3,
+      "price": 11400,
+      "address_to": 111
+    },
+    {
+      "car_id": 3,
+      "price": 17100,
+      "address_to": 112
+    },
+    {
+      "car_id": 3,
+      "price": 12100,
+      "address_to": 113
+    },
+    {
+      "car_id": 3,
+      "price": 13800,
+      "address_to": 114
+    },
+    {
+      "car_id": 3,
+      "price": 13800,
+      "address_to": 115
+    },
+    {
+      "car_id": 3,
+      "price": 10800,
+      "address_to": 116
+    },
+    {
+      "car_id": 3,
+      "price": 11500,
+      "address_to": 117
+    },
+    {
+      "car_id": 3,
+      "price": 11800,
+      "address_to": 118
+    },
+    {
+      "car_id": 3,
+      "price": 11800,
+      "address_to": 119
+    },
+    {
+      "car_id": 3,
+      "price": 4700,
+      "address_to": 120
+    },
+    {
+      "car_id": 3,
+      "price": 35000,
+      "address_to": 121
+    },
+    {
+      "car_id": 3,
+      "price": 38000,
+      "address_to": 122
+    },
+    {
+      "car_id": 3,
+      "price": 18000,
+      "address_to": 123
+    },
+    {
+      "car_id": 3,
+      "price": 31000,
+      "address_to": 124
+    }
+  ]
+}

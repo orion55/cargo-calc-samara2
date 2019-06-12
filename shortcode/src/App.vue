@@ -327,6 +327,7 @@
                     </div>
                 </div>
             </div>
+        </div>
     </form>
 </template>
 
@@ -1083,6 +1084,35 @@
         window.scrollTo(0, top)
       },
       fillDestinations () {
+        _.find(this.info.data.metadata.area)
+        this.address.options = [{
+          place: 'Пригород',
+          area: [],
+        }, {
+          place: 'Межгород',
+          area: [],
+        }]
+        let filterArray = _.filter(this.info.data.metadata.area, (item) => {
+          return item.id >= 10 && item.id < 100
+        })
+        filterArray = _.sortBy(filterArray, [(item) => {
+          return item.name
+        }])
+        _.forEach(filterArray, (item) => {
+          this.address.options[1].area.push(item)
+        })
+
+        filterArray = _.filter(this.info.data.metadata.area, (item) => {
+          return item.id >= 100 && item.id < 999
+        })
+        filterArray = _.sortBy(filterArray, [(item) => {
+          return item.name
+        }])
+        _.forEach(filterArray, (item) => {
+          this.address.options[2].area.push(item)
+        })
+      },
+      fillDestinationsOld () {
         //Заполняем пункты назначения
         //если не установлен флаг междугородние перевозки
         if (!this.intercityFlag) {
@@ -1192,7 +1222,7 @@
     },
     mounted () {
       axios
-        .all([axios.get(wp_data.plugin_dir_url + 'assets/json/price1.json'),
+        .all([axios.get(wp_data.plugin_dir_url + 'assets/json/price.json'),
           axios.get(wp_data.plugin_dir_url + 'assets/json/card.json')])
         .then(axios.spread((response, card_response) => {
           this.info.data = response.data

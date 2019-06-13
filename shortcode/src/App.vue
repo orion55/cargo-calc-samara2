@@ -539,6 +539,7 @@
 
           const current = _.find(this.info.data.price, {
             'car_id': this.car.selected.id,
+            'address_from': this.address_from.selected.id,
             'address_to': this.address_to.selected.id,
           })
 
@@ -668,6 +669,65 @@
         let priceNormal = 0
 
         //текущие адреса
+        const address_from_id = this.address_from.selected.id
+        const address_to_id = this.address_to.selected.id
+
+        //текущий автомобиль
+        const car_id = this.car.selected.id
+
+        //длительность заказа
+        const durability_id = this.durability.selected.id
+
+        if (!_.isEmpty(this.info.data)) {
+          //коллекция цен
+          const priceData = this.info.data.price
+
+          let currentPrice = 0, current = {}
+
+          this.changeBtn(true)
+          debugger
+          //"тяжелые" автомобили не зависят от срочности, но это не междугородние рейсы
+          if (car_id >= 3 && car_id <= 6) {
+            if (address_to_id < 100 && address_from_id < 100) {
+              current = _.find(priceData, {'car_id': car_id})
+              currentPrice += pricePlus(current, durability_id)
+            }
+          } else if (address_from_id === 999 && address_to_id === 999) {
+            console.log('!')
+            // расчёт Самара-Самара
+            current = _.find(priceData, {
+              'car_id': car_id,
+              'address_from': address_from_id,
+              'address_to': address_to_id,
+            })
+            currentPrice += pricePlus(current, durability_id)
+          } else if (address_from_id === 999 || address_from_id < 100 || address_from_id === 998) {
+            console.log('!!')
+            if (address_to_id === 999 || address_to_id < 100 || address_to_id === 998) {
+              console.log('!!!')
+              //расчёт Самара - пригород, пригород - пригород, Самара - Новокуйбышевск, пригород - Новокуйбышевск
+              current = _.find(priceData, {
+                'car_id': car_id,
+                'address_from': address_from_id,
+                'address_to': address_to_id,
+              })
+              currentPrice += pricePlus(current, durability_id)
+            }
+          }
+          console.log(address_from_id, address_to_id)
+          console.log(current)
+          if (_.isEmpty(current)) {
+            this.changeBtn(false)
+          }
+          priceNormal += currentPrice
+        }
+        return priceNormal
+      },
+      price_normal_common_old: function () {
+
+        let priceNormal = 0
+
+        //текущие адреса
         let address_from_id = this.address_from.selected.id
         let address_to_id = this.address_to.selected.id
 
@@ -776,7 +836,6 @@
           priceNormal += currentPrice
         }
         return priceNormal
-
       },
       price_normal: function () {
         return this.price_normal_common + this.price_movers

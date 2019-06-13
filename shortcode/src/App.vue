@@ -687,7 +687,7 @@
           this.changeBtn(true)
           debugger
           //"тяжелые" автомобили не зависят от срочности, но это не междугородние рейсы
-          if (car_id >= 3 && car_id <= 6) {
+          if (car_id >= 4 && car_id <= 6) {
             if (address_to_id < 100 && address_from_id < 100) {
               current = _.find(priceData, {'car_id': car_id})
               currentPrice += pricePlus(current, durability_id)

@@ -362,6 +362,36 @@
     return curPrice
   }
 
+  let priceSuburb = (options) => {
+    const {priceData, car_id, address_from_id, address_to_id, durability_id} = options
+    let cur = {}
+    if (car_id >= 1 && car_id <= 2) {
+      cur = _.find(priceData, {
+        'car_id': car_id,
+        'address_from': address_from_id,
+        'address_to': address_to_id,
+      })
+    } else if (car_id >= 3 && car_id <= 6) {
+      cur = _.find(priceData, {'car_id': car_id})
+    }
+    return pricePlus(cur, durability_id)
+  }
+
+  let priceInterCity = (options) => {
+    const {priceData, car_id, address} = options
+    let cur = {}
+    if (car_id === 2 || car_id === 3) {
+      cur = _.find(priceData, {
+        'car_id': car_id,
+        'address_to': address,
+      })
+      if (!_.isEmpty(cur)) {
+        return cur.price
+      }
+    }
+    return 0
+  }
+
   //добавляем анимацию к объекту
   let animateObj = (obj, className) => {
     obj.classList.add(className)
@@ -665,9 +695,6 @@
         return data
       },
       price_normal_common: function () {
-
-        let priceNormal = 0
-
         //текущие адреса
         const address_from_id = this.address_from.selected.id
         const address_to_id = this.address_to.selected.id
@@ -678,50 +705,120 @@
         //длительность заказа
         const durability_id = this.durability.selected.id
 
+        let currentPrice = 0
+
         if (!_.isEmpty(this.info.data)) {
           //коллекция цен
           const priceData = this.info.data.price
 
-          let currentPrice = 0, current = {}
-
           this.changeBtn(true)
-          debugger
-          //"тяжелые" автомобили не зависят от срочности, но это не междугородние рейсы
-          if (car_id >= 4 && car_id <= 6) {
-            if (address_to_id < 100 && address_from_id < 100) {
-              current = _.find(priceData, {'car_id': car_id})
-              currentPrice += pricePlus(current, durability_id)
-            }
-          } else if (address_from_id === 999 && address_to_id === 999) {
-            console.log('!')
-            // расчёт Самара-Самара
-            current = _.find(priceData, {
-              'car_id': car_id,
-              'address_from': address_from_id,
-              'address_to': address_to_id,
-            })
-            currentPrice += pricePlus(current, durability_id)
-          } else if (address_from_id === 999 || address_from_id < 100 || address_from_id === 998) {
-            console.log('!!')
-            if (address_to_id === 999 || address_to_id < 100 || address_to_id === 998) {
-              console.log('!!!')
-              //расчёт Самара - пригород, пригород - пригород, Самара - Новокуйбышевск, пригород - Новокуйбышевск
-              current = _.find(priceData, {
-                'car_id': car_id,
-                'address_from': address_from_id,
-                'address_to': address_to_id,
-              })
-              currentPrice += pricePlus(current, durability_id)
-            }
+
+          const options = {
+            priceData: priceData,
+            car_id: car_id,
+            address_from_id: address_from_id,
+            address_to_id: address_to_id,
+            durability_id: durability_id,
           }
-          console.log(address_from_id, address_to_id)
-          console.log(current)
-          if (_.isEmpty(current)) {
+
+          switch (true) {
+            case address_from_id === 999:
+              switch (true) {
+                case address_to_id === 999:
+                  currentPrice += priceSuburb(options)
+                  break
+                case address_to_id === 998:
+                  currentPrice += priceSuburb(options)
+                  break
+                case address_to_id < 100:
+                  currentPrice += priceSuburb(options)
+                  break
+                case address_to_id >= 100 && address_to_id < 900:
+                  currentPrice += priceInterCity({
+                    priceData: priceData,
+                    car_id: car_id,
+                    address: address_to_id,
+                  })
+                  break
+                default:
+                  console.log('default999')
+              }
+              break
+            case address_from_id === 998:
+              switch (true) {
+                case address_to_id === 999:
+
+                  break
+                case address_to_id === 998:
+
+                  break
+                case address_to_id < 100:
+
+                  break
+                case address_to_id >= 100 && address_to_id < 900:
+
+                  break
+                default:
+                  console.log('default998')
+              }
+              break
+            case address_from_id < 100:
+              switch (true) {
+                case address_to_id === 999:
+                  currentPrice += priceSuburb(options)
+                  break
+                case address_to_id === 998:
+                  currentPrice += priceSuburb(options)
+                  break
+                case address_to_id < 100:
+                  currentPrice += priceSuburb(options)
+                  break
+                case address_to_id >= 100 && address_to_id < 900:
+                  currentPrice += priceInterCity({
+                    priceData: priceData,
+                    car_id: car_id,
+                    address: address_to_id,
+                  })
+                  break
+                default:
+                  console.log('default<100')
+              }
+              break
+            case address_from_id >= 100 && address_from_id < 900:
+              switch (true) {
+                case address_to_id === 999:
+                  currentPrice += priceInterCity({
+                    priceData: priceData,
+                    car_id: car_id,
+                    address: address_from_id,
+                  })
+                  break
+                case address_to_id === 998:
+
+                  break
+                case address_to_id < 100:
+                  currentPrice += priceInterCity({
+                    priceData: priceData,
+                    car_id: car_id,
+                    address: address_from_id,
+                  })
+                  break
+                case address_to_id >= 100 && address_to_id < 900:
+
+                  break
+                default:
+                  console.log('default>=100')
+              }
+              break
+            default:
+              console.log('default')
+          }
+
+          if (currentPrice === 0) {
             this.changeBtn(false)
           }
-          priceNormal += currentPrice
         }
-        return priceNormal
+        return currentPrice
       },
       price_normal_common_old: function () {
 

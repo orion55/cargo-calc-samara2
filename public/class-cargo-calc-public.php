@@ -131,7 +131,7 @@ class Cargo_Calc_Public
                 $message .= "<tr><td><strong>Дом:</strong> </td><td>" . $info['address_to_house'] . "</td></tr>";
                 $message .= "<tr><td><strong>Подъезд:</strong> </td><td>" . $info['address_to_entrance'] . "</td></tr>";
 
-                $message .= "<tr style='background: #eee;'><td><strong>Тип подачи:</strong> </td><td>" . $info['time_delivery'] . "</td></tr>";
+//                $message .= "<tr style='background: #eee;'><td><strong>Тип подачи:</strong> </td><td>" . $info['time_delivery'] . "</td></tr>";
                 $message .= "<tr><td><strong>Время подачи:</strong> </td><td>" . $info['calendar'] . "</td></tr>";
                 $message .= "<tr><td><strong>Длительность заказа:</strong> </td><td>" . $info['durability'] . "</td></tr>";
                 $rigg = $info['rigging'] == "yes" ? "Есть" : "Нет";
@@ -188,7 +188,7 @@ class Cargo_Calc_Public
                 update_post_meta($post_id, '_address_to_house', $info['address_to_house']);
                 update_post_meta($post_id, '_address_to_entrance', $info['address_to_entrance']);
 
-                update_post_meta($post_id, '_time_delivery', $info['time_delivery']);
+//                update_post_meta($post_id, '_time_delivery', $info['time_delivery']);
                 update_post_meta($post_id, '_calendar', $info['calendar']);
                 update_post_meta($post_id, '_durability', $info['durability']);
                 update_post_meta($post_id, '_note', $info['note']);
@@ -240,7 +240,7 @@ class Cargo_Calc_Public
         $info['note'] = sanitize_textarea_field($_POST['note']);
         $info['price_normal'] = intval($_POST['price_normal']);
         $info['price_result'] = intval($_POST['price_result']);
-        $info['time_delivery'] = sanitize_text_field($_POST['time_delivery']);
+//        $info['time_delivery'] = sanitize_text_field($_POST['time_delivery']);
 
         $errorArr = [];
 
@@ -304,7 +304,7 @@ class Cargo_Calc_Public
             $out = [];
 
             $titles = ['Имя', 'Телефон', 'Номер карты', 'Откуда(район)', 'Улица', 'Дом', 'Подъезд',
-                'Куда(район)', 'Улица', 'Дом', 'Подъезд', 'Тип подачи', 'Время подачи', 'Длительность заказа', 'Примечание',
+                'Куда(район)', 'Улица', 'Дом', 'Подъезд', 'Время подачи', 'Длительность заказа', 'Примечание',
                 'Машина', 'Грузчики', 'Время работы грузчиков', 'Такелажные работы', 'Обычная цена',
                 'Размер скидки %', 'Сумма скидки', 'Итого со скидкой', 'Время заявки'];
             array_push($out, $titles);
@@ -333,7 +333,7 @@ class Cargo_Calc_Public
                         $meta->_address_to_house,
                         $meta->_address_to_entrance,
 
-                        $meta->_time_delivery,
+//                        $meta->_time_delivery,
                         $meta->_calendar,
                         $meta->_durability,
                         $meta->_note,

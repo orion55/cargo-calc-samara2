@@ -88,14 +88,6 @@
                                                @focus="onFocus">
                                     </div>
                                 </div>
-                                <div class="calc__intercity calc__hidden">
-                                    <label class="control control-checkbox calc__intercity-label">
-                                        Междугородние перевозки
-                                        <input type="checkbox" v-model="intercityFlag"
-                                               @change="fillDestinations"/>
-                                        <div class="control_indicator"></div>
-                                    </label>
-                                </div>
                             </div>
                             <div class="calc__row calc__row--two" ref="name_phone">
                                 <div class="calc__item calc__item--three">
@@ -238,15 +230,6 @@
                                     длительность
                                 </div>
                             </div>
-                            <div class="calc__item calc__item--five calc__hidden">
-                                <div class="calc__desc calc__desc--time">Когда подать</div>
-                                <multiselect v-model="time_delivery.selected"
-                                             :options="time_delivery_options"
-                                             label="label" track-by="id" :searchable="false"
-                                             :show-labels="false" :maxHeight="200"
-                                             class="calc__dropdown calc__dropdown--time"
-                                             :allow-empty="false"></multiselect>
-                            </div>
                             <div class="calc__item calc__item--six">
                                 <i class="far fa-calendar-alt calc__icon"></i>
                                 <datetime type="datetime" v-model="calendar.datetime"
@@ -266,8 +249,7 @@
                                              label="label" track-by="id" :searchable="false"
                                              :show-labels="false" :maxHeight="200"
                                              class="calc__dropdown calc__dropdown--durability"
-                                             :allow-empty="false"
-                                             :disabled="intercityFlag"></multiselect>
+                                             :allow-empty="false"></multiselect>
                             </div>
                             <div class="calc__item calc__item--eight">
                                 <a href="#" class="calc__link--plus"
@@ -362,6 +344,7 @@
     return curPrice
   }
 
+  //расчёт цены пригорода или Самары
   let priceSuburb = (options) => {
     const {priceData, car_id, address_from_id, address_to_id, durability_id} = options
     let cur = {}
@@ -377,6 +360,7 @@
     return pricePlus(cur, durability_id)
   }
 
+  //расчёт междугородней цены
   let priceInterCity = (options) => {
     const {priceData, car_id, address} = options
     let cur = {}
@@ -449,9 +433,9 @@
           },
           isDisabled: true,
         },
-        time_delivery: {
-          selected: {},
-        },
+        /* time_delivery: {
+           selected: {},
+         },*/
         durability: {
           selected: {
             id: 1,
@@ -506,7 +490,7 @@
           isCollapse: true,
           isDisable: false,
         },
-        intercityFlag: false,
+        // intercityFlag: false,
         riggingFlag: false,
         loading: true,
         buttonCheckout: {
@@ -661,39 +645,6 @@
         }
         return data
       },
-      time_delivery_options: function () {
-        //Когда подать
-        let data = [
-          {
-            id: 0,
-            label: 'Срочно (30-90 минут)',
-            $isDisabled: false,
-          },
-          {
-            id: 1,
-            label: 'Подача в течении дня',
-            $isDisabled: false,
-          },
-        ]
-        //запускаем первый раз?
-        if (_.isEmpty(this.time_delivery.selected)) {
-          this.time_delivery.selected = data[1]
-        }
-
-        let address_from_id = this.address_from.selected.id
-        let address_to_id = this.address_to.selected.id
-
-        if (this.riggingFlag) {
-          data[0].$isDisabled = true
-        } else if (address_from_id >= 10 || address_to_id >= 10) {
-          data[0].$isDisabled = true
-        }
-
-        if (data[0].$isDisabled) {
-          this.time_delivery.selected = data[1]
-        }
-        return data
-      },
       price_normal_common: function () {
         //текущие адреса
         const address_from_id = this.address_from.selected.id
@@ -820,145 +771,24 @@
         }
         return currentPrice
       },
-      price_normal_common_old: function () {
-
-        let priceNormal = 0
-
-        //текущие адреса
-        let address_from_id = this.address_from.selected.id
-        let address_to_id = this.address_to.selected.id
-
-        //текущий автомобиль
-        let car_id = this.car.selected.id
-
-        //время подачи
-        let time_delivery_id = this.time_delivery.selected.id
-
-        //длительность заказа
-        let durability_id = this.durability.selected.id
-
-        if (!_.isEmpty(this.info.data)) {
-          //коллекция цен
-          let priceData = this.info.data.price
-
-          //коллекция цен грузчиков
-          let priceLoader = this.info.data.price_loader
-
-          let currentPrice = 0, current = {}, current1 = {}
-
-          this.changeBtn(true)
-
-          //"тяжелые" автомобили не зависят от срочности, но это не междугородние рейсы
-          if (car_id >= 3 && car_id <= 5) {
-            if (address_to_id < 100 && address_from_id < 100) {
-              current = _.find(priceData, {'car_id': car_id})
-              currentPrice += pricePlus(current, durability_id)
-            }
-          } else if (address_from_id < 10) {
-            //расчет цены между районов внутри города
-            if (address_to_id < 10) {
-              //доставка срочная или Подача в течении дня
-              if (time_delivery_id === 0) {
-                current = _.find(
-                  priceData,
-                  {
-                    'car_id': car_id,
-                    'time_delivery_id': 0,
-                  })
-              } else {
-                current = _.find(priceData, {
-                  'car_id': car_id,
-                  'time_delivery_id': 1,
-                  'address_from': address_from_id,
-                  'address_to': address_to_id,
-                })
-              }
-            } else if (address_to_id < 100) {
-              //расчет город - пригород
-              current = _.find(priceData, {
-                'car_id': car_id,
-                'time_delivery_id': 1,
-                'address_to': address_to_id,
-              })
-            }
-            currentPrice += pricePlus(current, durability_id)
-          } else if (address_from_id < 100) {
-            // расчет пригород - город
-            if (address_to_id < 10) {
-              current = _.find(priceData, {
-                'car_id': car_id,
-                'time_delivery_id': 1,
-                'address_to': address_from_id,
-              })
-              currentPrice += pricePlus(current, durability_id)
-            } else if (address_to_id < 100) {
-              //расчет пригород - пригород
-              current = _.find(priceData, {
-                'car_id': car_id,
-                'time_delivery_id': 1,
-                'address_to': address_from_id,
-              })
-              current1 = _.find(priceData, {
-                'car_id': car_id,
-                'time_delivery_id': 1,
-                'address_to': address_to_id,
-              })
-
-              if (!_.isEmpty(current) && !_.isEmpty(current1)) {
-                currentPrice += current.min_price
-                currentPrice += current1.min_price
-
-                if (durability_id > current.min_time) {
-                  currentPrice += current.additional_price * (durability_id - current.min_time)
-                }
-              }
-            }
-          }
-          if (address_from_id >= 100 && address_to_id >= 100) {
-            //расчет межгород
-            if (address_from_id === 999 && address_to_id === 999) {
-              this.changeBtn(false)
-            } else if (address_from_id === 999 || address_to_id === 999) {
-              let address_dest = address_from_id === 999 ? address_to_id : address_from_id
-
-              current = _.find(priceData, {
-                'car_id': car_id,
-                'address_to': address_dest,
-              })
-              currentPrice += current.price
-            } else {
-              this.changeBtn(false)
-            }
-          }
-          priceNormal += currentPrice
-        }
-        return priceNormal
-      },
       price_normal: function () {
         return this.price_normal_common + this.price_movers
       },
       price_movers: function () {
         let loaders__price = 0
         if (!_.isEmpty(this.info.data)) {
-          let type_work_id = this.typeWork
+          const type_work_id = this.typeWork
           //коллекция цен грузчиков
-          let priceLoader = this.info.data.price_loader
+          const priceLoader = this.info.data.price_loader
           //грузчики
-          let loaders_id = +this.loaders.selected.id
-          let cargo_time_id = this.cargo_time.selected.id
-          //время подачи
-          let time_delivery_id = this.time_delivery.selected.id
+          const loaders_id = +this.loaders.selected.id
+          const cargo_time_id = this.cargo_time.selected.id
 
           if (loaders_id !== 0) {
-            let current = _.find(
-              priceLoader,
-              {
-                'time_delivery_id': time_delivery_id,
-                'type_work_id': type_work_id,
-              })
+            const current = _.find(priceLoader, {'type_work_id': type_work_id})
             if (!_.isEmpty(current)) {
               loaders__price = current.min_price * loaders_id
-              let delta = cargo_time_id - current.min_time
+              const delta = cargo_time_id - current.min_time
               if (delta > 0) {
                 loaders__price += current.additional_price * delta * loaders_id
               }
@@ -1061,10 +891,6 @@
           label: 'Нет',
           $isDisabled: false,
         }
-        this.time_delivery.selected = {
-          'id': 1,
-          'name': 'Подача в течении дня',
-        }
         this.durability.selected = {
           id: 1,
           label: '1 час',
@@ -1094,7 +920,7 @@
         this.contact.phone = ''
         this.card.serial = ''
         this.discount = 0
-        this.intercityFlag = false
+        // this.intercityFlag = false
         this.riggingFlag = false
         _.forEach(this.car.options, (item) => {
           item.$isDisabled = false
@@ -1109,10 +935,6 @@
           id: 0,
           label: 'Нет',
           $isDisabled: false,
-        }
-        this.time_delivery.selected = {
-          'id': 1,
-          'name': 'Подача в течении дня',
         }
         this.durability.selected = {
           id: 1,
@@ -1136,7 +958,7 @@
         this.card.serial = '1111111111'
         this.discount = 5
         this.cargo_form.isCollapse = false
-        this.intercityFlag = false
+        // this.intercityFlag = false
         this.riggingFlag = false
       },
       closeForm () {
@@ -1153,7 +975,7 @@
           nonce: this.wp_data.nonce,
           loaders: this.loaders.selected.label,
           cargo_time: this.cargo_time.selected.label,
-          time_delivery: this.time_delivery.selected.name,
+          // time_delivery: this.time_delivery.selected.name,
           durability: this.durability.selected.label,
           address_from: this.address_from.selected.name,
           address_from_street: this.address_from.street,

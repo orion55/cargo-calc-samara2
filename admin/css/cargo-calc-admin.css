@@ -38,3 +38,7 @@
     display: flex;
     align-items: center;
 }
+
+#carbon_fields_container__1 div.cf-field.cf-checkbox.cf-field--has-width.rigging-checkbox > div.cf-field__head {
+    flex: none;
+}

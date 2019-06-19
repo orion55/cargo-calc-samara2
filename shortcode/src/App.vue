@@ -348,7 +348,7 @@
   let priceSuburb = (options) => {
     const {priceData, car_id, address_from_id, address_to_id, durability_id} = options
     let cur = {}
-    if (car_id >= 1 && car_id <= 2) {
+    if (car_id >= 0 && car_id <= 2) {
       cur = _.find(priceData, {
         'car_id': car_id,
         'address_from': address_from_id,
@@ -550,12 +550,19 @@
         ]
 
         if (!_.isEmpty(this.info.data)) {
+          const car_id = this.car.selected.id
+          const priceData = this.info.data.price
 
-          const current = _.find(this.info.data.price, {
-            'car_id': this.car.selected.id,
-            'address_from': this.address_from.selected.id,
-            'address_to': this.address_to.selected.id,
-          })
+          let current = {}
+          if (car_id >= 0 && car_id <= 2) {
+            current = _.find(priceData, {
+              'car_id': car_id,
+              'address_from': this.address_from.selected.id,
+              'address_to': this.address_to.selected.id,
+            })
+          } else if (car_id >= 3 && car_id <= 6) {
+            current = _.find(priceData, {'car_id': car_id})
+          }
 
           if (!_.isEmpty(current) && 'min_time' in current) {
             const minTime = +current.min_time - 1
@@ -698,16 +705,20 @@
             case address_from_id === 998:
               switch (true) {
                 case address_to_id === 999:
-
+                  currentPrice += priceSuburb(options)
                   break
                 case address_to_id === 998:
-
+                  currentPrice += priceSuburb(options)
                   break
                 case address_to_id < 100:
-
+                  currentPrice += priceSuburb(options)
                   break
                 case address_to_id >= 100 && address_to_id < 900:
-
+                  currentPrice += priceInterCity({
+                    priceData: priceData,
+                    car_id: car_id,
+                    address: address_to_id,
+                  })
                   break
                 default:
                   console.log('default998')
@@ -745,7 +756,11 @@
                   })
                   break
                 case address_to_id === 998:
-
+                  currentPrice += priceInterCity({
+                    priceData: priceData,
+                    car_id: car_id,
+                    address: address_from_id,
+                  })
                   break
                 case address_to_id < 100:
                   currentPrice += priceInterCity({

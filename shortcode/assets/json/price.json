@@ -170,7 +170,7 @@
       {
         "id": 6,
         "name": "КамАЗ 20т (фура)",
-        "picture": "assets/img/car/car04.jpg",
+        "picture": "assets/img/car/car05.jpg",
         "size": " 13.6м * 2.45м * 2.7м",
         "carrying": "20 000 кг",
         "desc": "подходит для междугородних перевозок, внутригородских перевозок, по области, территории РФ"
@@ -727,240 +727,240 @@
     {
       "car_id": 0,
       "min_time": 2,
-      "min_price": 760,
-      "additional_price": 380,
+      "min_price": 790,
+      "additional_price": 390,
       "address_from": 999,
       "address_to": 999
     },
     {
       "car_id": 0,
       "min_time": 3,
-      "min_price": 1140,
-      "additional_price": 380,
+      "min_price": 1170,
+      "additional_price": 390,
       "address_from": 999,
       "address_to": 10
     },
     {
       "car_id": 0,
       "min_time": 3,
-      "min_price": 1140,
-      "additional_price": 380,
+      "min_price": 1170,
+      "additional_price": 390,
       "address_from": 999,
       "address_to": 11
     },
     {
       "car_id": 0,
       "min_time": 3,
-      "min_price": 1140,
-      "additional_price": 380,
+      "min_price": 1170,
+      "additional_price": 390,
       "address_from": 999,
       "address_to": 12
     },
     {
       "car_id": 0,
       "min_time": 3,
-      "min_price": 1140,
-      "additional_price": 380,
+      "min_price": 1170,
+      "additional_price": 390,
       "address_from": 999,
       "address_to": 13
     },
     {
       "car_id": 0,
       "min_time": 2,
-      "min_price": 1870,
-      "additional_price": 380,
+      "min_price": 1950,
+      "additional_price": 390,
       "address_from": 999,
       "address_to": 998
     },
     {
       "car_id": 0,
       "min_time": 3,
-      "min_price": 1140,
-      "additional_price": 380,
+      "min_price": 1170,
+      "additional_price": 390,
       "address_from": 10,
       "address_to": 999
     },
     {
       "car_id": 0,
       "min_time": 2,
-      "min_price": 760,
-      "additional_price": 380,
+      "min_price": 790,
+      "additional_price": 390,
       "address_from": 10,
       "address_to": 10
     },
     {
       "car_id": 0,
       "min_time": 3,
-      "min_price": 1140,
-      "additional_price": 380,
+      "min_price": 1170,
+      "additional_price": 390,
       "address_from": 10,
       "address_to": 11
     },
     {
       "car_id": 0,
       "min_time": 4,
-      "min_price": 1520,
-      "additional_price": 380,
+      "min_price": 1560,
+      "additional_price": 390,
       "address_from": 10,
       "address_to": 12
     },
     {
       "car_id": 0,
       "min_time": 4,
-      "min_price": 1520,
-      "additional_price": 380,
+      "min_price": 1560,
+      "additional_price": 390,
       "address_from": 10,
       "address_to": 13
     },
     {
       "car_id": 0,
       "min_time": 2,
-      "min_price": 1470,
-      "additional_price": 380,
+      "min_price": 1560,
+      "additional_price": 390,
       "address_from": 10,
       "address_to": 998
     },
     {
       "car_id": 0,
       "min_time": 3,
-      "min_price": 1140,
-      "additional_price": 380,
+      "min_price": 1170,
+      "additional_price": 390,
       "address_from": 11,
       "address_to": 999
     },
     {
       "car_id": 0,
       "min_time": 3,
-      "min_price": 1140,
-      "additional_price": 380,
+      "min_price": 1170,
+      "additional_price": 390,
       "address_from": 11,
       "address_to": 10
     },
     {
       "car_id": 0,
       "min_time": 2,
-      "min_price": 760,
-      "additional_price": 380,
+      "min_price": 790,
+      "additional_price": 390,
       "address_from": 11,
       "address_to": 11
     },
     {
       "car_id": 0,
       "min_time": 4,
-      "min_price": 1520,
-      "additional_price": 380,
+      "min_price": 1560,
+      "additional_price": 390,
       "address_from": 11,
       "address_to": 12
     },
     {
       "car_id": 0,
       "min_time": 4,
-      "min_price": 1520,
-      "additional_price": 380,
+      "min_price": 1560,
+      "additional_price": 390,
       "address_from": 11,
       "address_to": 13
     },
     {
       "car_id": 0,
       "min_time": 2,
-      "min_price": 1470,
-      "additional_price": 380,
+      "min_price": 1560,
+      "additional_price": 390,
       "address_from": 11,
       "address_to": 998
     },
     {
       "car_id": 0,
       "min_time": 3,
-      "min_price": 1140,
-      "additional_price": 380,
+      "min_price": 1170,
+      "additional_price": 390,
       "address_from": 12,
       "address_to": 999
     },
     {
       "car_id": 0,
       "min_time": 4,
-      "min_price": 1520,
-      "additional_price": 380,
+      "min_price": 1560,
+      "additional_price": 390,
       "address_from": 12,
       "address_to": 10
     },
     {
       "car_id": 0,
       "min_time": 4,
-      "min_price": 1520,
-      "additional_price": 380,
+      "min_price": 1560,
+      "additional_price": 390,
       "address_from": 12,
       "address_to": 11
     },
     {
       "car_id": 0,
       "min_time": 2,
-      "min_price": 760,
-      "additional_price": 380,
+      "min_price": 790,
+      "additional_price": 390,
       "address_from": 12,
       "address_to": 12
     },
     {
       "car_id": 0,
       "min_time": 3,
-      "min_price": 1140,
-      "additional_price": 380,
+      "min_price": 1170,
+      "additional_price": 390,
       "address_from": 12,
       "address_to": 13
     },
     {
       "car_id": 0,
       "min_time": 2,
-      "min_price": 2170,
-      "additional_price": 380,
+      "min_price": 2340,
+      "additional_price": 390,
       "address_from": 12,
       "address_to": 998
     },
     {
       "car_id": 0,
       "min_time": 3,
-      "min_price": 1140,
-      "additional_price": 380,
+      "min_price": 1170,
+      "additional_price": 390,
       "address_from": 13,
       "address_to": 999
     },
     {
       "car_id": 0,
       "min_time": 4,
-      "min_price": 1520,
-      "additional_price": 380,
+      "min_price": 1560,
+      "additional_price": 390,
       "address_from": 13,
       "address_to": 10
     },
     {
       "car_id": 0,
       "min_time": 4,
-      "min_price": 1520,
-      "additional_price": 380,
+      "min_price": 1560,
+      "additional_price": 390,
       "address_from": 13,
       "address_to": 11
     },
     {
       "car_id": 0,
       "min_time": 3,
-      "min_price": 1140,
-      "additional_price": 380,
+      "min_price": 1170,
+      "additional_price": 390,
       "address_from": 13,
       "address_to": 12
     },
     {
       "car_id": 0,
       "min_time": 2,
-      "min_price": 760,
-      "additional_price": 380,
+      "min_price": 790,
+      "additional_price": 390,
       "address_from": 13,
       "address_to": 13
     },
     {
       "car_id": 0,
       "min_time": 2,
-      "min_price": 2170,
-      "additional_price": 380,
+      "min_price": 2340,
+      "additional_price": 390,
       "address_from": 13,
       "address_to": 998
     },

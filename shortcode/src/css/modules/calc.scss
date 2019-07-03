@@ -128,7 +128,7 @@
       content: '';
       position: absolute;
       height: 20px;
-      right: -10px;
+      right: -20px;
       top: 0;
       width: 10px;
       background-color: inherit;
@@ -265,6 +265,10 @@
 
   .calc__item--eight {
     padding-bottom: 10px;
+  }
+
+  .calc__item--eleven {
+    padding-bottom: 5px;
   }
 
   .calc__ic {
@@ -431,7 +435,7 @@
   .calc__box--client {
     display: flex;
     flex-direction: column;
-    align-items: end;
+    align-items: flex-start;
     justify-content: center;
   }
 
@@ -800,12 +804,12 @@
     .calc__two {
       max-width: none;
       padding: 15px;
-      width: 100%;
+      width: 90%;
     }
 
     .calc__three {
       padding: 15px;
-      width: 100%;
+      width: 90%;
     }
 
     .calc__head {
@@ -941,12 +945,12 @@
     .calc__two {
       max-width: none;
       padding: 15px;
-      width: 100%;
+      width: 90%;
     }
 
     .calc__three {
       padding: 15px;
-      width: 100%;
+      width: 90%;
     }
 
     .calc__head {

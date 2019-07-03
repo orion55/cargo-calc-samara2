@@ -5,13 +5,13 @@ var shell = require('gulp-shell')
 gulp.task('deploy-ftp', function () {
 
   var conn = ftp.create({
-    host: 'grol55wy.beget.tech',
-    user: 'grol55wy_cargo',
-    password: 'y&wcKA7V',
+    host: 'masterlg.beget.tech',
+    user: 'masterlg',
+    password: 'Qo7gP*ZG',
     parallel: 10,
   })
 
-  const path = '/wp-content/plugins/cargo-calc-samara/shortcode'
+  const path = '/samara.master-gruzov.ru/public_html/wp-content/plugins/cargo-calc-samara2/shortcode'
 
   var globs = [
     'dist/**',

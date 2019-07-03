@@ -15,8 +15,8 @@ function crb_attach_theme_options()
         ->set_page_menu_position(7)
         ->add_fields(array(
             Field::make('html', 'crb_information_text')
-                ->set_html('<div><b>[cargo-calc]</b> - шорткод для вставки калькулятора<br>
-            <b>[cargo-calc full="1"]</b> - развёрнутый вид калькулятора         
+                ->set_html('<div><b>[cargo-calc-samara]</b> - шорткод для вставки калькулятора<br>
+            <b>[cargo-calc-samara full="1"]</b> - развёрнутый вид калькулятора         
             </div>'),
             Field::make('text', 'crb_email', 'Email')
                 ->set_help_text('Email для отправки заказов')

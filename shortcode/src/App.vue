@@ -574,10 +574,11 @@
                 item.$isDisabled = true
               })
             }
-            //если уже установлен заблокированный элемент, меняем на первый за ним незаблокированный
+            this.durability.selected = _.find(data, ['$isDisabled', false])
+            /*//если уже установлен заблокированный элемент, меняем на первый за ним незаблокированный
             if (data[this.durability.selected.id - 1].$isDisabled) {
               this.durability.selected = _.find(data, ['$isDisabled', false])
-            }
+            }*/
           }
         }
         return data

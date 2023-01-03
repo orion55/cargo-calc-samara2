@@ -21,8 +21,8 @@
     "weekstart": "^1.0.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.8.0",
-    "@vue/cli-service": "^3.8.0",
+    "@vue/cli-plugin-babel": "^5.0.8",
+    "@vue/cli-service": "^5.0.8",
     "gulp": "^4.0.2",
     "gulp-shell": "^0.7.1",
     "sass": "^1.18.0",
